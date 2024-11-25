@@ -23,18 +23,21 @@ public class Puffenduy extends Hogwarts{
         return honest;
     }
 
-    public static void comparingStudents(Puffenduy firstStudents, Puffenduy secondStudents){
-        int totalFirst = 0;
-        int totalSecond = 0;
-        totalFirst += firstStudents.faithful + firstStudents.honest + firstStudents.hardworking;
-        totalSecond += secondStudents.faithful + firstStudents.honest + firstStudents.hardworking;
-        if (totalFirst > totalSecond){
-            System.out.println(firstStudents.getFullname() + " лучше Пуффендуй чем, " + secondStudents.getFullname());
-        } else if (totalFirst < totalSecond) {
-            System.out.println(secondStudents.getFullname() + " лучше Пуффендуй чем, " + firstStudents.getFullname());
+    @Override
+    public int getScore() {
+        return hardworking + faithful + honest;
+    }
 
+    @Override
+    public void describeStudent() {
+        System.out.println("Puffenduy " + getScore());;
+    }
+
+    public void comparingStudents(Puffenduy student){
+        if (this.getScore() > student.getScore()){
+            System.out.println(this.getFullname() + " лучший пофендуй, чем  " + student.getFullname());
         } else {
-            System.out.println("Ученики равны по силе");
+            System.out.println(student.getFullname() + " лучший пофендуй, чем " + this.getFullname());
         }
     }
 }

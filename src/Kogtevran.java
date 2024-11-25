@@ -29,19 +29,21 @@ public class Kogtevran extends Hogwarts{
         return full_of_creativity;
     }
 
-    public static void comparingStudents(Kogtevran firstStundent, Kogtevran secondStudent){
-        int totalFirst = 0;
-        int totalSecond = 0;
-        totalFirst += firstStundent.smart + firstStundent.mudras + firstStundent.witty + firstStundent.full_of_creativity;
-        totalSecond += secondStudent.smart + secondStudent.mudras + secondStudent.witty + secondStudent.full_of_creativity;
-        if (totalFirst > totalSecond){
-            System.out.println(firstStundent.getFullname() + " лучше чем, " + secondStudent.getFullname());
-        } else if (totalFirst < totalSecond){
-            System.out.println(secondStudent.getFullname() + " лучше чем, " + firstStundent.getFullname());
+    @Override
+    public int getScore() {
+        return smart + mudras + witty + full_of_creativity;
+    }
 
+    @Override
+    public void describeStudent() {
+        System.out.println("Kogtevran " + getScore());;
+    }
+
+    public void comparingStudents(Kogtevran student){
+        if (this.getScore() > student.getScore()){
+            System.out.println(this.getFullname() + " лучший когтевранец, чем  " + student.getFullname());
         } else {
-            System.out.println("Ученики равны по силе");
+            System.out.println(student.getFullname() + " лучший когтевранец, чем " + this.getFullname());
         }
-
     }
 }

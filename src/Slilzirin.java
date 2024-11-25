@@ -35,18 +35,21 @@ public class Slilzirin extends Hogwarts{
         return lust_for_power;
     }
 
-    public static void comparingStudents(Slilzirin firstStudent, Slilzirin secondStudent){
-        int totalFirst = 0;
-        int totalSecond = 0;
-        totalFirst += firstStudent.cunning + firstStudent.determination + firstStudent.ambition + firstStudent.resourcefulness + firstStudent.lust_for_power;
-        totalSecond += secondStudent.cunning + secondStudent.determination + secondStudent.ambition + secondStudent.resourcefulness + secondStudent.lust_for_power;
-        if (totalFirst > totalSecond){
-            System.out.println(firstStudent.getFullname() + " лучше чем, " + secondStudent.getFullname());
-        } else if (totalFirst < totalSecond) {
-            System.out.println(secondStudent.getFullname() + " лучше чем, " + secondStudent.getFullname());
+    @Override
+    public int getScore() {
+        return cunning + determination + ambition + resourcefulness + lust_for_power;
+    }
 
+    @Override
+    public void describeStudent() {
+        System.out.println("Slizirin " + getScore());;
+    }
+
+    public void comparingStudents(Slilzirin student){
+        if (this.getScore() > student.getScore()){
+            System.out.println(this.getFullname() + " лучший слизирин, чем  " + student.getFullname());
         } else {
-            System.out.println("Ученики равны по силе");
+            System.out.println(student.getFullname() + " лучший слизирин, чем " + this.getFullname());
         }
     }
 }
